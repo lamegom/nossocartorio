@@ -1,0 +1,111 @@
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>Restful Web Application</display-name>
+
+<!-- disabled auto scan mode
+       <context-param>
+	<param-name>resteasy.scan</param-name>
+	<param-value>true</param-value>
+</context-param>
+         -->
+         
+<context-param>
+	<param-name>type1</param-name>
+	<param-value>chrome</param-value>
+</context-param>
+       <context-param>
+	<param-name>url1</param-name>
+	<param-value>http://54.200.174.75:4444/wd/hub</param-value>
+</context-param>
+
+       <context-param>
+	<param-name>type2</param-name>
+	<param-value>firefox</param-value>
+</context-param>
+       <context-param>
+	<param-name>url2</param-name>
+	<param-value>http://54.200.174.75:4444/wd/hub</param-value>
+</context-param>
+
+       <context-param>
+	<param-name>type3</param-name>
+	<param-value>firefox</param-value>
+</context-param>
+       <context-param>
+	<param-name>url3</param-name>
+	<param-value>http://52.26.164.96:4444/wd/hub</param-value>
+</context-param>
+         
+         
+<context-param>
+	<param-name>resteasy.resources</param-name>
+	<param-value>com.mkyong.rest.MessageRestService, com.mkyong.rest.MessageRestService2</param-value>
+</context-param>
+	
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/rest</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>
+			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+	</listener>
+	<listener>
+	<listener-class>
+             com.mkyong.listener.MyAppServletContextListener
+        </listener-class>
+   </listener>
+	
+	
+	<servlet>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<servlet-class>
+			org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+	</servlet>
+	<!-- <filter>
+  <filter-name>meuFiltro</filter-name>
+  <filter-class>com.mkyong.rest.ContentLengthFilter</filter-class>
+</filter>
+  
+<filter-mapping>
+  <filter-name>meuFiltro</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>-->
+	 
+	<!-- 
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/rest</param-value>
+	</context-param>
+	
+	<servlet>
+        <servlet-name>resteasy-servlet</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.mkyong.app.MessageApplication</param-value>
+        </init-param>
+    </servlet>
+    -->
+     
+	<servlet-mapping>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	
+ 	<servlet>
+		<servlet-name>Servlet Name For Demo1</servlet-name>
+		<servlet-class>com.mkyong.app.ServletDemo1</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Servlet Name For Demo1</servlet-name>
+		<url-pattern>/Demo1</url-pattern>
+	</servlet-mapping>
+
+</web-app>
